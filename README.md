@@ -26,13 +26,9 @@ Requires JDK 17 and the Android SDK (platform 35). No third-party libraries — 
 
 ## Releasing
 
-Push a version tag and GitHub Actions builds, verifies, and publishes the APK as a GitHub Release:
+Bump `versionCode` and `versionName` in `app/build.gradle` and push to `main`. GitHub Actions builds and verifies the APK, and if there's no release for that version yet it creates the `vX.Y.Z` tag and publishes a GitHub Release with the APK attached. Pushing a `v*` tag yourself also publishes a release.
 
-```bash
-git tag v1.0.1 && git push origin v1.0.1
-```
-
-Bump `versionCode` and `versionName` in `app/build.gradle` first so phones accept it as an update. Every push to `main` also builds the APK and attaches it to the workflow run as an artifact.
+Every push to `main` builds the APK and attaches it to the workflow run as an artifact, even when no new release is made.
 
 ## Signing
 
