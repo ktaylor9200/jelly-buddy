@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Jelly Buddy</string>
+    <string name="title">JELLY BUDDY</string>
+    <string name="hint">Tilt to slosh · Tap to jump\nSpin to make him dizzy · Shake for chaos</string>
+</resources>

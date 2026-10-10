@@ -1,0 +1,45 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace = 'com.ktaylor.jellybuddy'
+    compileSdk = 35
+
+    defaultConfig {
+        applicationId = 'com.ktaylor.jellybuddy'
+        minSdk = 26
+        targetSdk = 35
+        versionCode = 1
+        versionName = '1.0.0'
+    }
+
+    signingConfigs {
+        // A public, throwaway test key committed to the repo (same idea as Android's
+        // debug key). Using one fixed key means each new release installs over the last.
+        // Do not use it for a Play Store release.
+        testKey {
+            storeFile = rootProject.file('keystore/jellybuddy-test.jks')
+            storePassword = 'android'
+            keyAlias = 'jellybuddy'
+            keyPassword = 'android'
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled = true
+            shrinkResources = true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+            signingConfig = signingConfigs.testKey
+        }
+        debug {
+            signingConfig = signingConfigs.testKey
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+}
